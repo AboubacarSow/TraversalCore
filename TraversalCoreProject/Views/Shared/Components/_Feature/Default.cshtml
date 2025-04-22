@@ -1,0 +1,51 @@
+﻿@model List<FeatureDto>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    var mainFeature = Model.Where(m => m.IsMainFeature.Equals(true)).SingleOrDefault();
+    var features = Model.Where(f => f.IsMainFeature == false);
+    int marginCounter = 0;
+}
+<div class="best-rooms py-5">
+    <div class="container py-md-5">
+        <div class="ban-content-inf row">
+            <div class="maghny-gd-1 col-lg-6">
+                <div class="maghny-grid">
+                    <figure class="effect-lily border-radius  m-0">
+                        <img class="img-fluid" src="@mainFeature?.Image" alt="" />
+                        <figcaption>
+                            <div>
+                                <h4>@mainFeature?.Name</h4>
+                                <p>From @mainFeature?.Description </p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+            <div class="maghny-gd-1 col-lg-6 mt-lg-0 mt-4">
+                <div class="row">
+                    @foreach(var feature in features)
+                    {
+                        marginCounter++;
+                        <div class="maghny-gd-1 @(marginCounter>2 ? "mt-4" : "") col-6">
+                            <div class="maghny-grid">
+                                <figure class="effect-lily border-radius">
+                                    <img class="img-fluid" src="@feature.Image" alt="" />
+                                    <figcaption>
+                                        <div>
+                                            <h4>@feature.Name</h4>
+                                            <p>From @feature.Description </p>
+                                        </div>
+
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>  
+                    }
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
