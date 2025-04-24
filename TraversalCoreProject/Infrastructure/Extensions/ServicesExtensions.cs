@@ -1,9 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DTOs.Validators.IdentityErrorDescribers;
+using Entities.Models;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Repositories.EFCore.ContextFactory;
 using Repositories.EFCore.Contracts;
 using Repositories.EFCore.Models;
 using Services.Contracts;
 using Services.Models;
+using System.Reflection;
 
 namespace TraversalCoreProject.Infrastructure.Extensions
 {
@@ -34,6 +40,32 @@ namespace TraversalCoreProject.Infrastructure.Extensions
             services.AddScoped<IDestinationService, DestinationManager>();
             services.AddScoped<IFeatureService, FeatureManager>();
             services.AddScoped<ITestimonialService, TestimonialManager>();
+        }
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            })
+            .AddEntityFrameworkStores<RepositoryContext>()
+             .AddErrorDescriber<CustomErrorDescriber>() ; 
+            
+            //configureApplicationCookie must be called right after AddIdentity
+            //This overriding authorization Scheme
+            services.ConfigureApplicationCookie(options =>
+             {
+                options.LoginPath = "/Account/SignIn";
+                options.AccessDeniedPath = "/Error";
+             });
+        }
+        public static void ConfigureFluentValidation(this IServiceCollection services)
+        {
+            services.AddFluentValidationAutoValidation(config =>
+            {
+                config.DisableDataAnnotationsValidation = true;
+            }).AddFluentValidationClientsideAdapters()
+              .AddValidatorsFromAssemblyContaining<DTOs.AssemblyReference>();
+
         }
     }
 }

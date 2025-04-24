@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using System.Reflection;
 using TraversalCoreProject.Infrastructure.Extensions;
 
@@ -10,7 +12,14 @@ namespace TraversalCoreProject
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.ConfigureFluentValidation();
+            builder.Services.AddControllersWithViews(options =>
+            {
+                //The line applies a global authorization to all our controllers and actions
+                options.Filters.Add(new AuthorizeFilter());
+            });
+            builder.Services.ConfigureIdentity();
+           
             builder.Services.ConfigureRepositoryContext(builder.Configuration);
             builder.Services.RegisterRepositoryManager();
             builder.Services.RegisterServiceManager();
@@ -31,9 +40,12 @@ namespace TraversalCoreProject
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            app.MapControllerRoute(
+                name: "areas",
+                pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+             );
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
