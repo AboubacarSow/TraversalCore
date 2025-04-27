@@ -15,7 +15,7 @@ namespace TraversalCoreProject.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var destinations = await _manager.DestinationService.GetAllDestionsAsyn(false);
+            var destinations = await _manager.DestinationService.GetAllDestinationsAsyn(false);
             return View(destinations);
         }
         [HttpGet]

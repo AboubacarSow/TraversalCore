@@ -11,5 +11,6 @@
         public string DayNight { get; set; }
         public int Capacity { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

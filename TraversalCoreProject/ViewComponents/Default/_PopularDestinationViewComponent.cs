@@ -13,7 +13,7 @@ namespace TraversalCoreProject.ViewComponents.Default
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var destinations = await _manager.DestinationService.GetAllDestionsAsyn(false);
+            var destinations = await _manager.DestinationService.GetAllDestinationsAsyn(false);
             return View(destinations);
         }
     }

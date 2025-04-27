@@ -21,12 +21,13 @@ namespace Repositories.EFCore.Models
         private readonly ISocialMediaRepository _socialMedia;
                  
         private readonly ITestimonialRepository _testimonial ;
+        private readonly IReservationRepository _reservation;
 
         public RepositoryManager(IAboutRepository about, IContactRepository contact,
             IDestinationRepository destination, IFeatureRepository feature,
             IGuideRepository guide, INewsLetterRepository newsLetter,
             ISocialMediaRepository socialMedia, ITestimonialRepository testimonial,
-            RepositoryContext context)
+            RepositoryContext context, IReservationRepository reservation)
         {
             _about = about;
             _contact = contact;
@@ -37,6 +38,7 @@ namespace Repositories.EFCore.Models
             _socialMedia = socialMedia;
             _testimonial = testimonial;
             _context = context;
+            _reservation = reservation;
         }
 
         public IAboutRepository About => _about;
@@ -54,6 +56,8 @@ namespace Repositories.EFCore.Models
         public ISocialMediaRepository SocialMedia => _socialMedia;
 
         public ITestimonialRepository Testimonial => _testimonial;
+
+        public IReservationRepository Reservation => _reservation;
 
         public async Task SaveChangesAsync() => await _context.SaveChangesAsync();
         

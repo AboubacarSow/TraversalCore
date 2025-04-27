@@ -16,7 +16,7 @@ namespace Services.Models
             _mapper = mapper;
         }
 
-        public async Task<List<DestinationDto>> GetAllDestionsAsyn(bool trackChanges)
+        public async Task<List<DestinationDto>> GetAllDestinationsAsyn(bool trackChanges)
         {
             var destinations = await _manager.Destination.GetAllDestinations(trackChanges);
             return _mapper.Map<List<DestinationDto>>(destinations);

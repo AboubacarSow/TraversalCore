@@ -18,5 +18,6 @@ namespace Repositories.EFCore.ContextFactory
        public DbSet<NewsLetter> NewsLetters { get; set; }
        public DbSet<SocialMedia> SocialMedias { get; set; }
        public DbSet<Testimonial> Testimonials { get; set; }
+       public DbSet<Reservation> Reservations { get; set; }
     }
 }

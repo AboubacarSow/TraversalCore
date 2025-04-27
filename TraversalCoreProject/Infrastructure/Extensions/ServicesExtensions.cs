@@ -33,6 +33,7 @@ namespace TraversalCoreProject.Infrastructure.Extensions
             services.AddScoped<INewsLetterRepository, NewsLetterRepository>();
             services.AddScoped<ISocialMediaRepository, SocialMediaRepository>();
             services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+            services.AddScoped<IReservationRepository, ReservationRepository>();
         }
         public static void RegisterServiceManager(this IServiceCollection services)
         {
@@ -40,6 +41,8 @@ namespace TraversalCoreProject.Infrastructure.Extensions
             services.AddScoped<IDestinationService, DestinationManager>();
             services.AddScoped<IFeatureService, FeatureManager>();
             services.AddScoped<ITestimonialService, TestimonialManager>();
+            services.AddScoped<IFileService, FileManager>();
+            services.AddScoped<IReservationService, ReservationManager>();
         }
         public static void ConfigureIdentity(this IServiceCollection services)
         {

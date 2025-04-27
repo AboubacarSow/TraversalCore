@@ -67,7 +67,7 @@ namespace TraversalCoreProject.Controllers
                 return Redirect(returnUrl);
             }
 
-            return RedirectToAction(actionName:"Index",controllerName:"Destination");
+            return RedirectToAction(actionName: "Details", controllerName:"Profile",new {area="Member"});
         }
     }
 }

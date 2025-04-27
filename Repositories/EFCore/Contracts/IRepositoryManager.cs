@@ -10,7 +10,7 @@
         INewsLetterRepository NewsLetter { get; }
         ISocialMediaRepository SocialMedia { get; }
         ITestimonialRepository Testimonial { get; }
-
+        IReservationRepository Reservation { get; }
         Task SaveChangesAsync();
     }
 }

@@ -5,5 +5,7 @@
         IDestinationService DestinationService { get; }
         IFeatureService FeatureService { get; }
         ITestimonialService TestimonialService { get; }
+        IFileService FileService { get; }
+        IReservationService ReservationService { get; }
     }
 }

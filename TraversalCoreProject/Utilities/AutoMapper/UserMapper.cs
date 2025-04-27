@@ -9,6 +9,8 @@ namespace TraversalCoreProject.Utilities.AutoMapper
         public UserMapper()
         {
             CreateMap<UserRegistrationDto, AppUser>();
+            CreateMap<AppUser, UserDto>();
+            CreateMap<UserForUpdateDto, AppUser>().ReverseMap();
         }
     }
 }

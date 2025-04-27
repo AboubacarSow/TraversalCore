@@ -1,0 +1,30 @@
+﻿@model ReservationForInsertionDto
+@{
+    ViewData["Title"] = "rezervasyon yap";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="text-center">
+    <h5>Rezervayon Oluşturma</h5>
+</div>
+
+<div style="width:800px;margin:auto">
+    <form method="post">
+        <label class="form-label"> Tur</label>
+        @Html.DropDownListFor(r=>r.DestinationId, (List<SelectListItem>)ViewBag.Destinations,new{ @class="form-control"})
+        <br />
+        <label class="form-label">Tarih</label>
+        <input type="date" class="form-control" asp-for="Date"/>
+        <br />
+        <label class="form-label">Kişi Sayısı</label>
+        <input type="number" class="form-control" asp-for="Capacity" /><br />        
+        <label class="form-label"> Varsa Eklemek istedikleriniz</label>
+        <input type="text" asp-for="Description" class="form-control" /><br />
+        <div class="text-center">
+            <button class="btn btn-outline-primary"> Rezervasyon Yap
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+    </form>
+</div> 
+

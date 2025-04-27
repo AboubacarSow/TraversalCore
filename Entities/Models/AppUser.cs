@@ -8,9 +8,9 @@ namespace Entities.Models
         public string LastName { get; set; }
         public string? Image { get; set; }
         public bool Gender { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
 
     }
-    public class AppRole : IdentityRole<int> { }
 
 
 

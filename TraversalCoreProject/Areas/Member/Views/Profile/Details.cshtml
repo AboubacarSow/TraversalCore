@@ -1,0 +1,52 @@
+﻿@model UserDto
+@{
+    ViewData["Title"] = "Profilim";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+
+<style>
+
+    div{
+        margin-top:10px;
+    }
+</style>
+
+
+
+
+<div>
+    <div class="row" style="width:700px;margin:auto;">
+        <div class="col-6">
+            <h5>Profilim</h5>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-action="Update" asp-controller="Profile" asp-area="Member" class="btn btn-success">
+                Güncelle
+                <i class="fas fa-pencil-alt"></i>
+            </a>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12 text-center">
+            <img src="@Model.Image" style="width:50px;height:50px;border-radius:50%" />
+        </div>
+    </div>
+        <div style="width:700px;margin:auto;">
+            <label class="form-label" >Ad</label>
+            <input type="text" disabled asp-for="FirstName" class="form-control"/>
+            <br/>
+            <label class="form-label">Soyad</label>
+            <input type="text" disabled asp-for="LastName" class="form-control" />
+            <br/>
+            <label class="form-label">Mail Adresi</label>
+            <input type="text" disabled asp-for="Email"  class="form-control"/>
+            <br/>
+            <label class="form-label">Telefon </label>
+            <input type="text" disabled asp-for="PhoneNumber" class="form-control" />
+            <br/>
+            <label class="form-label">Cinsiyet</label>
+            <input type="text" disabled value="@(Model.Gender? "Erkek" :"Kadin")" class="form-control"/>
+        </div>
+</div>
