@@ -7,5 +7,6 @@
         ITestimonialService TestimonialService { get; }
         IFileService FileService { get; }
         IReservationService ReservationService { get; }
+        IGuideService GuideService { get; }
     }
 }

@@ -6,6 +6,6 @@
         public string Image { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
-        public ICollection<SocialMedia> SocialMedias { get; set; }
+        public virtual ICollection<SocialMedia> SocialMedias { get; set; }
     }
 }

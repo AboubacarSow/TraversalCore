@@ -7,6 +7,8 @@
         public string? Name { get; set; }
         public string AccountUrl { get; set; }
         public int GuideId { get; set; }
-        public Guide? Guide { get; set; }
+        public virtual Guide? Guide { get; set; }
+        public int AppUserId { get; set; }
+        public virtual AppUser AppUser { get; set; }
     }
 }

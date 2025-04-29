@@ -43,6 +43,7 @@ namespace TraversalCoreProject.Infrastructure.Extensions
             services.AddScoped<ITestimonialService, TestimonialManager>();
             services.AddScoped<IFileService, FileManager>();
             services.AddScoped<IReservationService, ReservationManager>();
+            services.AddScoped<IGuideService, GuideManager>();
         }
         public static void ConfigureIdentity(this IServiceCollection services)
         {

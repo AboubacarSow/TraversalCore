@@ -8,7 +8,10 @@ namespace Entities.Models
         public string LastName { get; set; }
         public string? Image { get; set; }
         public bool Gender { get; set; }
+        public string Location { get; set; }
         public virtual ICollection<Reservation> Reservations { get; set; }
+
+        public virtual ICollection<SocialMedia> SocialMedias { get; set; }
 
     }
 

@@ -7,8 +7,12 @@ namespace Repositories.EFCore.ContextFactory
     public class RepositoryContext: IdentityDbContext<AppUser, AppRole,int>
     {
        public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
-        {
-        }
+       {
+       }
+       protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+       {
+            optionsBuilder.UseLazyLoadingProxies();
+       }
        public DbSet<About> Abouts { get; set; }
        public DbSet<Comment> Comments { get; set; }
        public DbSet<Contact> Contacts { get; set; }
