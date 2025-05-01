@@ -69,5 +69,11 @@ namespace TraversalCoreProject.Controllers
 
             return RedirectToAction(actionName: "Details", controllerName:"Profile",new {area="Member"});
         }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction(nameof(SignIn));
+        }
     }
 }

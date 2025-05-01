@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 
 namespace DTOs.DestinationDtos
 {
-    class CreateDestinationDto
-    {
+    public record CreateDestinationDto(string City,
+        decimal Price, IFormFile ImageUrl,
+        string Description, string DayNight, int Capacity)
+    { 
+        public string ? Image { get; set; }
     }
+
 }

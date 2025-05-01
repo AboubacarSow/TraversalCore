@@ -1,0 +1,65 @@
+﻿@model List<DestinationDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int counter = 0;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-2">
+    <h5>Tur Rota Listesi</h5>
+    <a asp-action="Create" asp-controller="Destination" asp-area="Admin" class="btn btn-primary mt-0"><i class="fa fa-plus me-1"></i>Ekle </a>
+</div>
+
+<div class="card" style="width:max-content">
+
+    <table class="table table-hover table-bordered">
+    <thead class="bg-blue">
+        <tr>
+            <th>No</th>
+            <th>Resim</th>
+            <th>Şehir</th>
+            <th>Fıyat</th>
+            <th>Kapasite</th>
+            <th>Sitede Gör</th>
+            <th>Detaylar</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var destination in Model)
+        {
+            counter++;
+            <tr class="text-nowrap">
+                <td>@counter</td>
+                <td><img src="@destination.Image" style="width:70px; height:70px; border-radius:20px" /></td>
+                <td>@destination.City</td>
+                <td>@destination.Price</td>
+                <td>@destination.Capacity</td>
+                <td>
+                    <a class="btn btn-outline-info" asp-action="Index" asp-controller="Destination" asp-area="" >
+                        Sitede Gör
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-info" asp-action="Details" asp-controller="Destination" asp-area="" asp-route-id="@destination.Id">
+                        Ayrıntı
+                    </a>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <a class="btn btn-success" asp-action="Update" asp-controller="Destination" asp-area="Admin" asp-route-id="@destination.Id">
+                           <i class="fa fa-edit me-1"></i>
+                            Güncelle
+                        </a> 
+                        <a class="btn btn-danger" asp-action="Delete" asp-controller="Destination" asp-area="Admin" asp-route-id="@destination.Id">
+                            <i class="fa fa-trash me-1"></i>
+                            Sil
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+

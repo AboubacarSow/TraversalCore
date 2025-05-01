@@ -9,6 +9,8 @@ namespace TraversalCoreProject.Utilities.AutoMapper
         public DestinationMapper()
         {
             CreateMap<Destination, DestinationDto>();
+            CreateMap<CreateDestinationDto, Destination>();
+            CreateMap<UpdateDestinationDto, Destination>().ReverseMap();
         }
     }
 }
