@@ -48,6 +48,8 @@ namespace TraversalCoreProject.Controllers
         [HttpGet]
         public IActionResult SignIn()
         {
+            if(_signInManager.IsSignedIn(User))
+                return RedirectToAction(actionName: "Details", controllerName: "Profile", new { area = "Member" });
             return View();
         } 
         [HttpPost]
